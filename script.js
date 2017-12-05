@@ -21,14 +21,14 @@ function sendMessage(sender, sms, receiver) {
 WYNIK = 'J.D'; */
 
 function getInitials(firstName, lastName) {
-    return firstName.charAt(0)
-        .toUpperCase()
-        .substring(0,1) + '.' + lastName.charAt(0).toUpperCase().substring(0,1);
+    return firstName.charAt(0).toUpperCase() + '.' + lastName.charAt(0).toUpperCase();
 }
 /* 3. Napisz funkcję, która generuje losową liczbę, zaokrągloną do dwóch liczb po przecinku a następnie zwraca stringa "Twoja szczęśliwa liczba to: TUTAJ_TA_LOSOWA_LICZBA" */
 
 
-
+function getNumber() {
+    return 'Twoja szczęśliwa liczba to: ' + (Math.random() * 48 +1).toFixed(2);
+}
 /* 4. Napraw bugi we funkcji oraz popraw formatowanie nazewnictwa. Funkcja powinna zwrocić sumę tip i price
 
  Function get_dinner_price {
@@ -37,3 +37,10 @@ function getInitials(firstName, lastName) {
    var price = 100;
  }
 get_dinner_price(); // musi zwrócić liczbę o wartości 120 (100 + 20) */
+
+function getDinnerPrice() {
+    var tip = 20;
+    var price = 100;
+    return price + tip;
+}
+
