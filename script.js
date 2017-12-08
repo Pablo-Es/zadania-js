@@ -10,25 +10,35 @@ var sms = '   Hello Jane, i am really tired today, i will call you tommorrow.   
 var receiver = 'JANE';
 
 WYNIK = "(FROM: Mikey) (TO: Jane) (MESSAGE: Hello Jane, i am really tired today, i will call you tommorrow.)"; */
+var sender = 'Paweł';
+var sms = 'Hello Madzia, i am really tired today, i will call you tommorrow.';
+var receiver = 'Madzia';
 
 function sendMessage(sender, sms, receiver) {
     return '(FROM: ' + sender.charAt(0).toUpperCase() + sender.substring(1).toLowerCase() + ')' + ' ' + '(TO: ' + receiver.charAt(0).toUpperCase() + receiver.substring(1).toLowerCase() + ')'
         + ' ' + '(MESSAGE: ' + sms.trim() + ')';
 }
+console.log(sendMessage(sender, sms, receiver));
 
 /* 2. Napisz funkcję, która przyjmuje dwa parametry - firstName oraz lastName, a następnie zwraca inicjały rozdzielone kropką, zwrócony string powinien składać się z wielkich liter. Przykładowy wynik dla następujących zmiennych: var firstName = 'john'; var lastName = 'doe';
 
 WYNIK = 'J.D'; */
 
+var firstName = 'Paweł';
+var lastName = 'szyposzyński';
 function getInitials(firstName, lastName) {
+
     return firstName.charAt(0).toUpperCase() + '.' + lastName.charAt(0).toUpperCase();
 }
+console.log(getInitials(firstName,lastName));
+
 /* 3. Napisz funkcję, która generuje losową liczbę, zaokrągloną do dwóch liczb po przecinku a następnie zwraca stringa "Twoja szczęśliwa liczba to: TUTAJ_TA_LOSOWA_LICZBA" */
 
 
 function getNumber() {
     return 'Twoja szczęśliwa liczba to: ' + (Math.random() * 48 +1).toFixed(2);
 }
+console.log(getNumber());
 /* 4. Napraw bugi we funkcji oraz popraw formatowanie nazewnictwa. Funkcja powinna zwrocić sumę tip i price
 
  Function get_dinner_price {
@@ -44,3 +54,4 @@ function getDinnerPrice() {
     return price + tip;
 }
 
+console.log(getDinnerPrice());
