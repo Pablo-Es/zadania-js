@@ -30,7 +30,6 @@ const company = {};
                 name: office.name,
                 headquarter: office.headquarter || false,
                 workers: workers.filter((worker) => (worker.office === office.id))
-
             }
         }
     );
@@ -48,19 +47,17 @@ Do stworzenia struktury firmy uzyj przykladowych danych z zmiennych offices i wo
 Uzywajac obiektu �Firma� wykonaj nastepujace operacje (w kolejnosci):
 
 1) Wyswietl, informacje o biurze w Gliwicach (lokalizacja, liczba przypisanych pracownik�w, srednia pensja), */
-function getInfoAboutOffice(office) {
-    company.offices
-}
-const officeInGliwice = company.offices
-        .filter((office) => office.id === 'GL')
-        .map(({name,workers}) => {
-            return {
-                location: name,
-                numberOfWorkers: workers.length,
-                averageSalary: workers.reduce((acc, next) => acc + next.salary, 0) / workers.length
-            }
-        });
-console.log(officeInGliwice);
+const getInfoAboutOffice = officeName => company.offices.map(office => {
+        return {
+            location: office.name,
+            numberOfWorkers: office.workers.length,
+            averageSalary: (office.workers.reduce((acc, next) => acc + next.salary, 0) / office.workers.length).toFixed(2)
+        }
+    })
+    .find(locat => locat.location === officeName);
+
+
+console.log(getInfoAboutOffice('Gliwice'));
 // 2) Dodaj nowe biuro (w Poznaniu),
 
 company.offices.push({id: 'PO', name: 'Poznan', headquarter: false, workers: []});
