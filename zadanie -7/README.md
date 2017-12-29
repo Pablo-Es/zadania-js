@@ -1,4 +1,4 @@
-#Zadanie 7
+# Zadanie 7
 Dane sa tablice:
 ```javascript
 var offices = [
