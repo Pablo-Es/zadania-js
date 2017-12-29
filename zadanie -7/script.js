@@ -84,21 +84,21 @@ console.log(averageSalaryInCompany);
 // 6) Wyswietl najlepiej oplacanego pracownika w poszczeg�lnych biurach,
 const getMaxSalary = salary => Math.max(...salary);
 
-const maxSalaryWorkersByOffice = company.offices.map(({name, workers}) => {
+const maxSalaryWorkersByOffice = company.offices.map(({workers}) => {
     let salaryWorkersByOffice = workers.map(worker => worker.salary);
-   return  {
-           officeName: name,
-           workers: workers.filter((worker) => (worker.salary === getMaxSalary(salaryWorkersByOffice)))
-   }
+    return {
+        workers: workers.filter(office => office.salary === getMaxSalary(salaryWorkersByOffice))
+    }
+
 });
-console.log(maxSalaryWorkersByOffice);
+const maxSalaryInOffice = maxSalaryWorkersByOffice.reduce((acc, next) => acc.concat(next.workers),[]);
+
+console.log(maxSalaryInOffice);
+
 
 
 // 7) Wyswietl najlepiej oplacanego pracownika w calej firmie oraz nazwe jego biura.
 
-const salaryWorkers = allWorkers.map(worker => worker.salary);
-const mostRichWorker = allWorkers.find(office => office.salary === getMaxSalary(salaryWorkers));
-console.log(mostRichWorker);
-
-
-
+const theRichestWorker = maxSalaryInOffice.sort((prev, next) => next.salary - prev.salary)
+                                          .find(first => first.salary);
+console.log(theRichestWorker);
