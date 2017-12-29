@@ -47,6 +47,7 @@ Do stworzenia struktury firmy uzyj przykladowych danych z zmiennych offices i wo
 Uzywajac obiektu �Firma� wykonaj nastepujace operacje (w kolejnosci):
 
 1) Wyswietl, informacje o biurze w Gliwicach (lokalizacja, liczba przypisanych pracownik�w, srednia pensja), */
+
 const getInfoAboutOffice = officeName => company.offices.map(office => {
         return {
             location: office.name,
@@ -54,7 +55,7 @@ const getInfoAboutOffice = officeName => company.offices.map(office => {
             averageSalary: (office.workers.reduce((acc, next) => acc + next.salary, 0) / office.workers.length).toFixed(2)
         }
     })
-    .find(locat => locat.location === officeName);
+    .find(loc => loc.location === officeName);
 
 
 console.log(getInfoAboutOffice('Gliwice'));
@@ -96,10 +97,8 @@ console.log(maxSalaryWorkersByOffice);
 // 7) Wyswietl najlepiej oplacanego pracownika w calej firmie oraz nazwe jego biura.
 
 const salaryWorkers = allWorkers.map(worker => worker.salary);
-// const maxSalary = (Math.max(...getSalaryWorkers));
 const mostRichWorker = allWorkers.find(office => office.salary === getMaxSalary(salaryWorkers));
 console.log(mostRichWorker);
-/* Uzyj konsoli do wyswietlenia danych. (wolaj w console.log funkcje, kt�re zwracaja zadane wartosci, np. najlepiej oplacanego pracowinika)
-Uzywaj skladni z ES6 lub ES5 (badz konsekwentny) */
+
 
 
