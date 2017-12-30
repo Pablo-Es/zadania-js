@@ -89,16 +89,15 @@ const maxSalaryWorkersByOffice = company.offices.map(({workers}) => {
     return {
         workers: workers.filter(office => office.salary === getMaxSalary(salaryWorkersByOffice))
     }
+    })
+        .reduce((acc, next) => acc.concat(next.workers),[])
+        .sort((prev, next) => next.salary - prev.salary);
 
-});
-const maxSalaryInOffice = maxSalaryWorkersByOffice.reduce((acc, next) => acc.concat(next.workers),[]);
-
-console.log(maxSalaryInOffice);
+console.log(maxSalaryWorkersByOffice);
 
 
 
 // 7) Wyswietl najlepiej oplacanego pracownika w calej firmie oraz nazwe jego biura.
 
-const theRichestWorker = maxSalaryInOffice.sort((prev, next) => next.salary - prev.salary)
-                                          .find(first => first.salary);
-console.log(theRichestWorker);
+
+console.log(maxSalaryWorkersByOffice[0]);
