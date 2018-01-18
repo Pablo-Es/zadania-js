@@ -1,0 +1,10 @@
+table {
+    margin: 20px;
+
+}
+tr {
+    padding: 0 20px;
+}
+.greyColor {
+    background-color: gainsboro;
+}
