@@ -27,26 +27,16 @@ const $container = $('.container');
 
     $table.append(getRowsWithUsers());
 
-const $checkbox = $('.input-check');
 
 function showIdInConsole() {
     if($(this).prop('checked')) {
         console.log($(this).data('id'));
-
     }
-
 }
-$table.on('change','.input-check', showIdInConsole);
-
-const $removeRowBtn = $('.remove-icon');
 
 function removeRow() {
-
-   return $(this).parent().remove();
+    return $(this).parent().remove();
 }
-$table.on('click','.remove-icon', removeRow);
-
-const $allRows = $('.table-row');
 
  function addClassName(name) {
      return function () {
@@ -58,10 +48,7 @@ const $allRows = $('.table-row');
          $(this).removeClass(name);
      };
  }
-$table.on({
-    mouseenter: addClassName('greyColor'),
-    mouseleave: removeClassName('greyColor')
-},'.table-row');
+
 
 const $inputUserName = $('#inputName');
 const $inputSurname = $('#inputSurname');
@@ -74,7 +61,6 @@ const $submitBtn = $('button[type="submit"]');
         const MIN_REQUIRED_AGE_VALUE = 19;
         return $inputUserName.val().length < MIN_REQUIRED_NAME_LENGTH ||
             $inputAge.val() < MIN_REQUIRED_AGE_VALUE;
-
     }
 
     function validateSubmitBtn() {
@@ -83,8 +69,7 @@ const $submitBtn = $('button[type="submit"]');
 
     $inputUserName.add($inputAge).on('keyup', validateSubmitBtn);
 
-
-function addToArray() {
+function addUser() {
    event.preventDefault();
    users.push({
        firstName: $inputUserName.val(),
@@ -95,8 +80,13 @@ function addToArray() {
    });
      $table.html(getRowsWithUsers());
 }
-$submitBtn.on('click', addToArray);
+$submitBtn.on('click', addUser);
 
-
+    $table.on('change','.input-check', showIdInConsole);
+    $table.on('click', '.remove-icon', removeRow);
+    $table.on({
+        mouseenter: addClassName('greyColor'),
+        mouseleave: removeClassName('greyColor')
+    },'.table-row');
 
 
