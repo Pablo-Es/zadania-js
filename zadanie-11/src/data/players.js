@@ -1,4 +1,4 @@
-export default [
+const players = [
     {id: 1, name: 'Anatolyj', level: 40, bio: 'age 50, with one hand player'},
     {id: 2, name: 'Maksym', level: 9, bio: 'age 34, clubs: Arka Noego'},
     {id: 3, name: 'Natasha', level: 15, bio: 'age 22, club: Sankt Petersunrg'},
@@ -11,3 +11,4 @@ export default [
     {id: 10, name: 'Gawron', level: 47, bio: 'age 28'},
     
 ];
+export default players;
