@@ -17,6 +17,7 @@ export default  () => {
     const state = {
         showCheckboxes: false,
     };
+    const playersIds = Object.keys(players);
     return <React.Fragment>
     <Table>
         <TableHeader displaySelectAll={state.showCheckboxes}>
@@ -26,9 +27,9 @@ export default  () => {
             </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={state.showCheckboxes}>
-            {players.map(player => <TableRow key={player.id}>
-                <TableRowColumn><Link to={`/player/${player.id}`}>{player.name}</Link></TableRowColumn>
-                <TableRowColumn>{player.level}</TableRowColumn>
+            {playersIds.map(id => <TableRow key={id}>
+                <TableRowColumn><Link to={`/player/${id}`}>{players[id].name}</Link></TableRowColumn>
+                <TableRowColumn>{players[id].level}</TableRowColumn>
             </TableRow>)}
         </TableBody>
     </Table>
