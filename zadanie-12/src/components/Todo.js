@@ -1,14 +1,16 @@
 import React from 'react';
-import tasks from '../data/tasks';
 
-export default (props) => {
-        const tasksIds = Object.keys(tasks);
-        const {name} = props;
+
+export default class extends React.Component {
+
+        render() {
+        const {name, isFinished} = this.props;
+        console.log({isFinished});
         return <React.Fragment>
             <ul>
-                {tasksIds
-                    .map(id => <li key={id}>{tasks[id].name}</li>)
-                }
+                <li className={isFinished ? 'isFinished--true' : 'isFinished--false'}>{name}</li>
             </ul>
         </React.Fragment>
+    }
+
 }

@@ -1,28 +1,26 @@
 import React from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import tasks from '../data/tasks';
 import Todo from './Todo';
-
+import '../css/styles.css';
 
 export default class extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            tasks: tasks
+            tasks: [
+                {name: 'Zrobić zadanie domowe', isFinished: false},
+                {name: 'Wynieść śmieci', isFinished: true}
+            ]
         }
     }
 
 
     render() {
-
-        return <BrowserRouter>
-            <MuiThemeProvider>
+        return <MuiThemeProvider>
                 <React.Fragment>
-                 <Todo/>
+                    {this.state.tasks.map(task => <Todo name={task.name} isFinished={task.isFinished}/>)}
                 </React.Fragment>
             </MuiThemeProvider>
-        </BrowserRouter>
     }
 }

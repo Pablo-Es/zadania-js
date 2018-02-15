@@ -1,0 +1,6 @@
+.isFinished--true {
+    text-decoration: line-through;
+}
+.isFinished--false {
+    text-decoration: none;
+}
