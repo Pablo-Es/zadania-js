@@ -17,17 +17,25 @@ export default class extends React.Component {
             ]
         }
     }
-    newTodos = () => {
+    addTodo = () => {
+        const newTodosTable = [...this.state.tasks, this.refs.state.tasks];
         this.setState({
-            tasks: [...this.state.tasks, newTodo]
-        });
-    }
+            tasks: newTodosTable
+        })
+    };
+    // newTodos = () => {
+    //
+    //     this.setState({
+    //         tasks: [...this.state.tasks, AddTodo.state.tasks]
+    //     })
+    // };
 
     render() {
+
         return <MuiThemeProvider>
                 <React.Fragment>
                     {this.state.tasks.map(task => <Todo name={task.name} isFinished={task.isFinished}/>)}
-                    <AddTodo onAdded={this.newTodos}/>
+                    <AddTodo ref="addTodoRef" onAdded={this.state.tasks}/>
                 </React.Fragment>
             </MuiThemeProvider>
     }
