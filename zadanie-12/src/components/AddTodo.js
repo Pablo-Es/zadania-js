@@ -5,31 +5,26 @@ export default class extends React.Component {
         super(props);
 
         this.state = {
-            tasks:[
-                {name:''}
-            ]
+            task: ''
         }
     }
+
  newTodo = (e) => {
      this.setState({
-             tasks: [{
-                 name: e.target.value
-             }]
+             task: e.target.value
          }
      )
 
  };
-    currentStateApp = () => {
-        return this.state
+    onButtonClicked = () => {
+         this.props.onAdded(this.state.task);
     };
 
-
     render() {
-        // console.log(this.state);
-        const {onAdded} = this.props;
+
         return <React.Fragment>
             <input type="text" onChange={this.newTodo}/>
-            <button onClick={onAdded}>Add</button>
+            <button onClick={this.onButtonClicked}>Add</button>
         </React.Fragment>
     }
 
