@@ -5,24 +5,14 @@ import ListProfile from './ListProfile'
 
 class FormView extends Component {
   state = {
-    profiles: [
-      {
-        id: 1,
-        name: 'Paweł Szyposzyński',
-        phone: 793679731,
-        email: 'poczta@poczta.pl',
-        category: 'osobisty'
-      },
-      {
-        id: 2,
-        name: 'Marian Piłka',
-        phone: 796789456,
-        email: 'wd@o2.pl',
-        category: 'rodzina'
-      }
-    ]
+    profiles: []
   }
-  addProfile = (nameProfile, phoneProfile, emailProfile, categoryProfile) => {
+  addProfile = ({
+    nameProfile,
+    phoneProfile,
+    emailProfile,
+    categoryProfile
+  }) => {
     this.setState({
       profiles: this.state.profiles.concat({
         id: Date.now().toString(32),
@@ -31,6 +21,11 @@ class FormView extends Component {
         email: emailProfile,
         category: categoryProfile
       })
+    })
+  }
+  removeProfile = profileId => {
+    this.setState({
+      profiles: this.state.profiles.filter(profile => profile.id !== profileId)
     })
   }
   render() {
@@ -43,7 +38,10 @@ class FormView extends Component {
             </Header>
 
             <AddProfile addProfile={this.addProfile} />
-            <ListProfile profiles={this.state.profiles} />
+            <ListProfile
+              profiles={this.state.profiles}
+              removeProfile={this.removeProfile}
+            />
           </Grid.Column>
         </Grid>
       </React.Fragment>

@@ -3,7 +3,7 @@ import { Button, Form } from 'semantic-ui-react'
 
 const initialState = {
   nameProfile: '',
-  phoneProfile: 0,
+  phoneProfile: '',
   emailProfile: '',
   categoryProfile: ''
 }
@@ -12,7 +12,6 @@ class AddProfile extends Component {
   state = initialState
   handleSubmit = event => {
     event.preventDefault()
-
     this.props.addProfile(this.state)
 
     this.setState(initialState)
@@ -38,6 +37,7 @@ class AddProfile extends Component {
           <Form.Field>
             <label>Numer telefonu</label>
             <input
+              type="number"
               onChange={this.handleChange}
               placeholder="Numer telefonu"
               name="phoneProfile"
@@ -48,6 +48,7 @@ class AddProfile extends Component {
             <label>Email</label>
             <input
               type="email"
+              onChange={this.handleChange}
               placeholder="email"
               name="emailProfile"
               value={this.state.emailProfile}
