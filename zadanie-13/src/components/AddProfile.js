@@ -1,33 +1,69 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
+
+const initialState = {
+  nameProfile: '',
+  phoneProfile: 0,
+  emailProfile: '',
+  categoryProfile: ''
+}
 
 class AddProfile extends Component {
+  state = initialState
+  handleSubmit = event => {
+    event.preventDefault()
+
+    this.props.addProfile(this.state)
+
+    this.setState(initialState)
+  }
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({
+      [name]: value
+    })
+  }
   render() {
     return (
       <React.Fragment>
-        <Grid container>
-          <Grid.Column>
-            <Form>
-              <Form.Field>
-                <label>Imię i nazwisko</label>
-                <input placeholder="Imię i nazwisko" />
-              </Form.Field>
-              <Form.Field>
-                <label>Numer telefonu</label>
-                <input placeholder="Numer telefonu" />
-              </Form.Field>
-              <Form.Field>
-                <label>Email</label>
-                <input type="email" placeholder="email" />
-              </Form.Field>
-              <Form.Field>
-                <label>Kategoria(rodzina, praca, itd.)</label>
-                <input placeholder="Kategoria" />
-              </Form.Field>
-              <Button type="submit">Submit</Button>
-            </Form>
-          </Grid.Column>
-        </Grid>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Field>
+            <label>Imię i nazwisko</label>
+            <input
+              onChange={this.handleChange}
+              placeholder="Imię i nazwisko"
+              name="nameProfile"
+              value={this.state.nameProfile}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Numer telefonu</label>
+            <input
+              onChange={this.handleChange}
+              placeholder="Numer telefonu"
+              name="phoneProfile"
+              value={this.state.phoneProfile}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="email"
+              name="emailProfile"
+              value={this.state.emailProfile}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Kategoria(rodzina, praca, itd.)</label>
+            <input
+              onChange={this.handleChange}
+              placeholder="Kategoria"
+              name="categoryProfile"
+              value={this.state.categoryProfile}
+            />
+          </Form.Field>
+          <Button type="submit">Dodaj kontakt</Button>
+        </Form>
       </React.Fragment>
     )
   }
