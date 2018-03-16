@@ -4,11 +4,6 @@ import AddProfile from './AddProfile'
 import ListProfile from './ListProfile'
 
 class FormView extends Component {
-  removeProfile = profileId => {
-    this.setState({
-      profiles: this.state.profiles.filter(profile => profile.id !== profileId)
-    })
-  }
   render() {
     return (
       <React.Fragment>
@@ -19,10 +14,7 @@ class FormView extends Component {
             </Header>
 
             <AddProfile />
-            <ListProfile
-              profiles={this.state.profiles}
-              removeProfile={this.removeProfile}
-            />
+            <ListProfile />
           </Grid.Column>
         </Grid>
       </React.Fragment>

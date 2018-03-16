@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Header } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 class ListProfile extends Component {
   handleRemoveClick = event => {
@@ -39,4 +40,15 @@ class ListProfile extends Component {
   }
 }
 
-export default ListProfile
+export default connect(
+  state => ({
+    profiles: state.profiles
+  }),
+  dispatch => ({
+    removeProfile: removedProfileId =>
+      dispatch({
+        type: 'REMOVE_PROFILE',
+        removedProfileId
+      })
+  })
+)(ListProfile)
