@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 const initialState = {
   nameProfile: '',
@@ -70,4 +71,23 @@ class AddProfile extends Component {
   }
 }
 
-export default AddProfile
+export default connect(
+  state => ({
+    profiles: state.profiles
+  }),
+  dispatch => ({
+    addProfile: ({
+      nameProfile,
+      phoneProfile,
+      emailProfile,
+      categoryProfile
+    }) =>
+      dispatch({
+        type: 'ADD_PROFILE',
+        nameProfile,
+        phoneProfile,
+        emailProfile,
+        categoryProfile
+      })
+  })
+)(AddProfile)

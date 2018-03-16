@@ -4,25 +4,6 @@ import AddProfile from './AddProfile'
 import ListProfile from './ListProfile'
 
 class FormView extends Component {
-  state = {
-    profiles: []
-  }
-  addProfile = ({
-    nameProfile,
-    phoneProfile,
-    emailProfile,
-    categoryProfile
-  }) => {
-    this.setState({
-      profiles: this.state.profiles.concat({
-        id: Date.now().toString(32),
-        name: nameProfile,
-        phone: phoneProfile,
-        email: emailProfile,
-        category: categoryProfile
-      })
-    })
-  }
   removeProfile = profileId => {
     this.setState({
       profiles: this.state.profiles.filter(profile => profile.id !== profileId)
@@ -37,7 +18,7 @@ class FormView extends Component {
               Zarządzanie listą kontaktów
             </Header>
 
-            <AddProfile addProfile={this.addProfile} />
+            <AddProfile />
             <ListProfile
               profiles={this.state.profiles}
               removeProfile={this.removeProfile}
