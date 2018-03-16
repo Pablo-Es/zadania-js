@@ -73,7 +73,7 @@ class AddProfile extends Component {
 
 export default connect(
   state => ({
-    profiles: state.profiles
+    profiles: state.data
   }),
   dispatch => ({
     addProfile: ({

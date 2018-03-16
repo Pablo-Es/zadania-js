@@ -42,7 +42,7 @@ class ListProfile extends Component {
 
 export default connect(
   state => ({
-    profiles: state.profiles
+    profiles: state.profiles.data
   }),
   dispatch => ({
     removeProfile: removedProfileId =>

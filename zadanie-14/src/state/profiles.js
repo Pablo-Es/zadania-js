@@ -1,5 +1,5 @@
 const initialState = {
-  profiles: []
+  data: []
 }
 
 export default (state = initialState, action = {}) => {
@@ -7,7 +7,7 @@ export default (state = initialState, action = {}) => {
     case 'ADD_PROFILE':
       return {
         ...state,
-        profiles: state.profiles.concat({
+        data: state.data.concat({
           id: Date.now().toString(32),
           name: action.nameProfile,
           phone: action.phoneProfile,
@@ -18,7 +18,7 @@ export default (state = initialState, action = {}) => {
     case 'REMOVE_PROFILE':
       return {
         ...state,
-        profiles: state.profiles.filter(
+        data: state.data.filter(
           profile => profile.id !== action.removedProfileId
         )
       }
